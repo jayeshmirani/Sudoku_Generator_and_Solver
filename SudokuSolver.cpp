@@ -2,7 +2,7 @@
 using namespace std;
 
 #define BLANK 0 // BLANK is used for empty cells in sudoku grid
-int N=9;
+int N;
 
 bool UsedInRow(vector<vector<int>> &grid, int row, int num)
 {
@@ -33,7 +33,7 @@ bool UsedInBox(vector<vector<int>> &grid, int boxStartRow,int boxStartCol, int n
 bool isSafe(vector<vector<int>> &grid, int row,int col, int num)
 {
     return grid[row][col] == BLANK && !UsedInRow(grid, row, num) && !UsedInCol(grid, col, num)
-            && !UsedInBox(grid, row - row % 3,col - col % 3, num);
+           && !UsedInBox(grid, row - row % 3,col - col % 3, num);
 }
 
 bool SolveSudoku(vector<vector<int>> &grid, stack<pair<int,int>> &blank_ind)
@@ -61,7 +61,6 @@ bool SolveSudoku(vector<vector<int>> &grid, stack<pair<int,int>> &blank_ind)
 
 int main()
 {
-    int N;
     cout << "Enter the size of Sudoku grid\n";
     cin >> N;
     vector<vector<int>> grid(N,vector<int>(N,0));
@@ -96,12 +95,12 @@ int main()
     return 0;
 }
 
-//  3 0 6 5 0 8 4 0 0 
-//  5 2 0 0 0 0 0 0 0 
-//  0 8 7 0 0 0 0 3 1 
-//  0 0 3 0 1 0 0 8 0 
-//  9 0 0 8 6 3 0 0 5 
-//  0 5 0 0 9 0 6 0 0 
-//  1 3 0 0 0 0 2 5 0 
-//  0 0 0 0 0 0 0 7 4 
-//  0 0 5 2 0 6 3 0 0
+//3 0 6 5 0 8 4 0 0
+//5 2 0 0 0 0 0 0 0
+//0 8 7 0 0 0 0 3 1
+//0 0 3 0 1 0 0 8 0
+//9 0 0 8 6 3 0 0 5
+//0 5 0 0 9 0 6 0 0
+//1 3 0 0 0 0 2 5 0
+//0 0 0 0 0 0 0 7 4
+//0 0 5 2 0 6 3 0 0
