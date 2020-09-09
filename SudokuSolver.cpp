@@ -32,8 +32,9 @@ bool UsedInBox(vector<vector<int>> &grid, int boxStartRow,int boxStartCol, int n
 
 bool isSafe(vector<vector<int>> &grid, int row,int col, int num)
 {
+    int sqrt_N=sqrt(N);
     return grid[row][col] == BLANK && !UsedInRow(grid, row, num) && !UsedInCol(grid, col, num)
-           && !UsedInBox(grid, row - row % 3,col - col % 3, num);
+           && !UsedInBox(grid, row - row % sqrt_N,col - col % sqrt_N, num);
 }
 
 bool SolveSudoku(vector<vector<int>> &grid, stack<pair<int,int>> &blank_ind)
